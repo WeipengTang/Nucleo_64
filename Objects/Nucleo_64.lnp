@@ -1,0 +1,19 @@
+--cpu=Cortex-M4.fp
+".\objects\startup_stm32f303xe.o"
+".\objects\sysclock.o"
+".\objects\system_stm32f3xx.o"
+".\objects\main.o"
+".\objects\led_flash.o"
+".\objects\systick.o"
+".\objects\lcd.o"
+".\objects\steppermotor.o"
+".\objects\servo.o"
+".\objects\dcmotor.o"
+".\objects\uds.o"
+".\objects\encoder.o"
+".\objects\uart.o"
+".\objects\beeper.o"
+--strict --scatter ".\Objects\Nucleo_64.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\Nucleo_64.map" -o .\Objects\Nucleo_64.axf
