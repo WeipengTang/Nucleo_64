@@ -4,8 +4,8 @@
 #define PRESCALER_NUM 89
 #define ARR_NUM 15999
 #define MCU_CLK 72000000
-#define MAX_SERVO_ANGLE 180
-#define MIN_SERVO_ANGLE 75
+#define MAX_SERVO_ANGLE 150
+#define MIN_SERVO_ANGLE 40
 
 void ServoInit(void){
 	

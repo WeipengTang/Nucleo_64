@@ -51,7 +51,7 @@ int main(void){
 	limitSwitchInit();																		//Inititate the limit switches
 	beeperInit();																					//Initiate the beeper
 	char input_buffer[MAX_UART_BUFSIZ+1];									//buffer for RS232 communication
-	servoPosition(100);																		//default servo position
+	servoPosition(60);																		//default servo position
 	current_instructions.stepper_target = 90;							//default stepper motor target
 	current_instructions.stepper_speed = 2;								//default stepper motor speed
 	current_instructions.DCM_Left_DIR = 1;								//default left DC motor direction (1 is forward, -1 is backward)
@@ -75,10 +75,12 @@ int main(void){
 	int8_t right_motor_dir_temp;
 	uint32_t right_motor_spd_temp;
 	
+	LCDprintf("Hello world");
+	Delay_ms(1000);
+	
 	while(1){
 //************************************main menu**********************************
-		
-
+			
 			
 			UARTprintf("*****Main Menu*****\n");
 			UARTprintf("1 - Camera module\n");
@@ -100,7 +102,7 @@ int main(void){
 							case 1:
 								while(servo_flag != TRUE){
 									UARTprintf("\n*****Servo*****\n");
-									UARTprintf("Enter Servo angle:(75 to 180)\n");
+									UARTprintf("Enter Servo angle:(40 to 150)\n");
 									while(UARTCheckEnter() != 1);  //wait for user input
 									UARTString(input_buffer);
 									servoPosition(atoi(input_buffer));
@@ -176,11 +178,11 @@ int main(void){
 						while(UARTCheckEnter() != 1);  //wait for user input
 						UARTString(input_buffer);
 						if(input_buffer[0] == 'F' || input_buffer[0] == 'f'){
-							left_motor_dir_temp = 1;
+							left_motor_dir_temp = -1;
 							left_motor_dir_flag = TRUE;
 						}
 						else if(input_buffer[0] == 'B' || input_buffer[0] == 'b'){
-							left_motor_dir_temp = -1;
+							left_motor_dir_temp = 1;
 							left_motor_dir_flag = TRUE;
 						}
 						else
