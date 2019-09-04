@@ -119,7 +119,7 @@ void stepperHoming(void){
 	CLR_BITS(TIM4->DIER, TIM_DIER_CC1IE);
 	
 	//keep turning ccw until hit left limit switch
-	while(!(GPIO(LMSW_LEFT_PORT)->IDR & GPIO_IDR_2)){
+	while(!(GPIO(LMSW_RIGHT_PORT)->IDR & GPIO_IDR_10)){
 		runStepperMotor(-1);
 		Delay_ms(20);
 	}	
@@ -131,7 +131,7 @@ void stepperHoming(void){
 	current_position = stepper_min_angle;
 	
 	//turn cw until hit right limit switch
-	while(!(GPIO(LMSW_RIGHT_PORT)->IDR & GPIO_IDR_10)){
+	while(!(GPIO(LMSW_LEFT_PORT)->IDR & GPIO_IDR_2)){
 		runStepperMotor(1);
 		current_position++;
 		Delay_ms(20);
