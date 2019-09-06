@@ -67,5 +67,13 @@ struct instruction{
 
 typedef struct instruction Instruction;
 
-
+void receive_cmd(char *buffer);
+uint8_t input_boolean_judge(char input, char expected_letter);
+void main_menu(char *buffer);
+void camera_menu(char *buffer);
+void servo_control_menu(char *buffer);
+void stepper_motor_menu(char *buffer);
+void stepper_motor_control_menu(char *buffer, Instruction* current_instructions);
+void stepper_recenter_menu(void);
+void dc_motor_control_menu(char *input_buffer, Instruction* current_instructions);
 #endif
