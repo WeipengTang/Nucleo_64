@@ -125,16 +125,13 @@ void UDSEcho(void){
 	
 	
 }
- uint32_t current_captured;
- volatile uint32_t last_captured = 0;
- volatile uint32_t signal_polarity = 0;
- uint32_t overflow_count_echo;
+
 void TIM15_IRQHandler(void){
 	
-//	static uint32_t current_captured;
-//	static volatile uint32_t last_captured = 0;
-//	static volatile uint32_t signal_polarity = 0;
-//	static uint32_t overflow_count_echo;
+	static uint32_t current_captured;
+	static volatile uint32_t last_captured = 0;
+	static volatile uint32_t signal_polarity = 0;
+	static uint32_t overflow_count_echo;
 	
 	
 	if((TIM15->SR & TIM_SR_UIF) != 0){														//Check if overflow has taken place
